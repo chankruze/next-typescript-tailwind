@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   return (
@@ -74,8 +75,15 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
+          Powered by
+          <div className="relative h-4 w-16 ml-2">
+            <Image
+              src="/vercel.svg"
+              alt="Vercel Logo"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </a>
       </footer>
     </div>
