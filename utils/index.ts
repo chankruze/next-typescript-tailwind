@@ -22,3 +22,9 @@ export const isActiveRoute = (pathname: string, route: string): boolean => {
 
   return false;
 };
+
+export const sleep = (ms: number) => {
+  return () => {
+    return new Promise((resolve) => setTimeout(() => resolve(true), ms));
+  };
+};

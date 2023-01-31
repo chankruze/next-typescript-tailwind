@@ -7,7 +7,7 @@ Copyright (c) geekofia 2022 and beyond
 
 import { NavLinkType } from "../types/navlink";
 // icons
-import { MdHome, MdInfo } from "react-icons/md";
+import { MdDashboard, MdHome, MdInfo } from "react-icons/md";
 
 export const navLinks: NavLinkType[] = [
   {
@@ -17,7 +17,13 @@ export const navLinks: NavLinkType[] = [
     roles: [],
   },
   {
-    label: "about",
+    label: "Dashboard",
+    href: "/dashboard",
+    icon: MdDashboard,
+    roles: [],
+  },
+  {
+    label: "About",
     href: "/about",
     icon: MdInfo,
     roles: [],

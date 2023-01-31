@@ -5,8 +5,10 @@ Created: Fri Sep 09 2022 10:32:01 GMT+0530 (India Standard Time)
 Copyright (c) geekofia 2022 and beyond
 */
 
+"use client";
+
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { navLinks } from "../../config";
 import { isActiveRoute } from "../../utils";
 // components
@@ -15,9 +17,11 @@ import NavBrand from "./NavBrand";
 import Avatar from "./Avatar";
 // icons
 import { MdClose, MdMenu } from "react-icons/md";
+import { NavLinkType } from "../../types/navlink";
+import classNames from "classnames";
 
-const NavBar = () => {
-  const router = useRouter();
+const Navbar = () => {
+  const path = usePathname() as string;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -59,19 +63,18 @@ const NavBar = () => {
         this section will be hidden.
         2. This should be opened with a toggle button. */}
       <div
-        className={`lg:flex lg:flex-row items-center gap-2
-        ${
-          isMenuOpen
-            ? "border-t mt-2 border-gray-200 dark:border-gray-700 w-full lg:w-fit flex-col"
-            : "hidden"
-        }`}
+        className={classNames(`lg:flex lg:flex-row items-center gap-2`, {
+          "border-t mt-2 border-gray-200 dark:border-gray-700 w-full lg:w-fit flex-col":
+            isMenuOpen,
+          hidden: !isMenuOpen,
+        })}
       >
         {/* links to render (must be next/link) */}
-        {navLinks.map((navLink) => (
+        {navLinks.map((navLink: NavLinkType) => (
           <NavLink
             key={navLink.label}
             navLink={navLink}
-            isActive={isActiveRoute(router.pathname, navLink.href)}
+            isActive={isActiveRoute(path, navLink.href)}
             showIcon
             showText
             closeNavbar={() => setIsMenuOpen(false)}
@@ -82,4 +85,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;
