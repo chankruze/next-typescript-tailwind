@@ -5,6 +5,8 @@ Created: Fri Sep 09 2022 12:39:38 GMT+0530 (India Standard Time)
 Copyright (c) geekofia 2022 and beyond
 */
 
+"use client";
+
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -19,9 +21,12 @@ const Avatar = () => {
       >
         <Image
           src="https://picsum.photos/200"
-          layout="fill"
           className="object-fill"
           alt="Avatar"
+          width={200}
+          height={200}
+          priority
+          quality={20}
         />
       </div>
       {isMenuOpen && (
